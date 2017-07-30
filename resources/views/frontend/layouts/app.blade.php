@@ -18,6 +18,9 @@
         @else
             <link rel="stylesheet" href="{{ mix('/css/frontend.css') }}">
         @endif
+        <link rel="stylesheet" href="/vendor/simple-line-icons/css/simple-line-icons.css">
+        <link rel="stylesheet" href="/vendor/device-mockups/device-mockups.min.css">
+        <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css">
         @yield('after-styles')
 
         <script>
@@ -26,10 +29,10 @@
             ]); ?>
         </script>
     </head>
-    <body id="app-layout">
+    <body id="page-top">
         <div id="app">
-            @include('includes.partials.logged-in-as')
             @include('frontend.includes.nav')
+            @include('frontend.includes.header')
 
             <div class="container">
                 @include('includes.partials.messages')

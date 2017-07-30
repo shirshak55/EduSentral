@@ -34,7 +34,7 @@ class UpdateBoardRequest extends Request
             'name' => ['required', 'max:191', Rule::unique('boards','name')->ignore($board->id)],
             'description'=>['required'],
             'location'=>['required'],
-            'image'=>['required','mimes:png,jpg,gif'],
+            'image'=>['required','mimes:png,jpeg,gif'],
         ];
     }
 }

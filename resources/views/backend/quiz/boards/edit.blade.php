@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-   <form method="POST" action="{{ route('admin.quiz.boards.update',$board->id) }}" accept-charset="UTF-8" class="form-horizontal" role="form" id="edit-board" enctype="multipart/form-data">
+   <form method="POST" action="{{ route('admin.quiz.boards.update',$board) }}" accept-charset="UTF-8" class="form-horizontal" role="form" id="edit-board" enctype="multipart/form-data">
         {{ csrf_field() }} {{ method_field('PATCH') }}
         <div class="box box-success">
             <div class="box-header with-border">

@@ -189,6 +189,11 @@ return [
         Intervention\Image\ImageServiceProvider::class,
 
         /*
+         * Laravel Official Packages
+         */
+        Laravel\Passport\PassportServiceProvider::class,
+
+        /*
          * Application Service Providers...
          */
         App\Providers\AccessServiceProvider::class,

@@ -21,13 +21,13 @@ class Board extends Model
         return SlugOptions::create()
                 ->generateSlugsFrom('name')
                 ->saveSlugsTo('slug')
-                ->usingSeperator('-')
+                ->usingSeparator('-')
                 ->slugsShouldBeNoLongerThan(50)
                 ->doNotGenerateSlugsOnUpdate();
     }
 
     public function getRouteKeyName()
     {
-        return $this->slug;
+        return 'slug';
     }
 }

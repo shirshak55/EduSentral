@@ -21,7 +21,7 @@ class BoardsTableController extends Controller
     public function __invoke(ManageBoardRequest $request)
     {
         return Datatables::of($this->boards->getForDataTable())
-                ->escapeColumns(['id','name','location','created_at','updated_at'])
+                ->escapeColumns(['id','name','location','created_at','updated_at','slug'])
                 ->addColumn('actions',function($board){
                     return $board->action_buttons;
                 })

@@ -17,9 +17,6 @@
 </head>
 
 <body id="page-top">
-    @include('includes.partials.logged-in-as')
-    @include('includes.partials.messages')
-
     <nav class="navbar fixed-top navbar-toggleable-md navbar-light" id="mainNav">
        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarExample" aria-controls="navbarExample" aria-expanded="false" aria-label="Toggle navigation">
            Menu <i class="fa fa-bars"></i>

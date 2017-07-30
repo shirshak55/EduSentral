@@ -28,6 +28,7 @@ class BoardRepository extends BaseRepository
                     'boards.id',
                     'boards.name',
                     'boards.location',
+                    'boards.slug',
                     'boards.created_at',
                     'boards.updated_at',
                 ]);
@@ -81,7 +82,7 @@ class BoardRepository extends BaseRepository
     {
         $board_file_name = $board_name.'.'.$image->getClientOriginalExtension();
 
-        Image::make($image)->save( public_path('uploads'.DIRECTORY_SEPARATOR.'boards'.DIRECTORY_SEPARATOR. $board_file_name)  );
+        Image::make($image)->resize(800, 300)->save( public_path('uploads'.DIRECTORY_SEPARATOR.'boards'.DIRECTORY_SEPARATOR. $board_file_name)  );
 
         return $board_file_name;
     }
