@@ -8,25 +8,18 @@
 
         <title>@yield('title', app_name())</title>
 
-        <!-- Meta -->
-        <meta name="description" content="@yield('meta_description', 'Laravel 5 Boilerplate')">
-        <meta name="author" content="@yield('meta_author', 'Anthony Rappa')">
+        <meta name="description" content="@yield('meta_description', 'EduSentral Entrance Application')">
+        <meta name="author" content="@yield('meta_author', 'Shirshak Bajgain')">
         @yield('meta')
 
-        <!-- Styles -->
         @yield('before-styles')
-
-        <!-- Check if the language is set to RTL, so apply the RTL layouts -->
-        <!-- Otherwise apply the normal LTR layouts -->
         @langRTL
-            {{ Html::style(getRtlCss(mix('css/frontend.css'))) }}
+            <link rel="stylesheet" href="{{ getRtlCss(mix('/css/frontend.css')) }}">
         @else
-            {{ Html::style(mix('css/frontend.css')) }}
+            <link rel="stylesheet" href="{{ mix('/css/frontend.css') }}">
         @endif
-
         @yield('after-styles')
 
-        <!-- Scripts -->
         <script>
             window.Laravel = <?php echo json_encode([
                 'csrfToken' => csrf_token(),
@@ -41,12 +34,11 @@
             <div class="container">
                 @include('includes.partials.messages')
                 @yield('content')
-            </div><!-- container -->
-        </div><!--#app-->
+            </div>
+        </div>
 
-        <!-- Scripts -->
         @yield('before-scripts')
-        {!! Html::script(mix('js/frontend.js')) !!}
+        <script src='{{ mix('js/frontend.js') }}'></script>
         @yield('after-scripts')
 
         @include('includes.partials.ga')

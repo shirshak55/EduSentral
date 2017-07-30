@@ -20,6 +20,7 @@ class CreateBoardsTable extends Migration
 
             $table->text('description')->nullable;
             $table->string('location')->nullable;
+            $table->string('slug')->unique();
 
             $table->string('image')->nullable;
 
