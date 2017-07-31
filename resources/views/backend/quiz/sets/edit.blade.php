@@ -10,7 +10,7 @@
 @endsection
 
 @section('content')
-    <form method="POST" action="{{ route('admin.quiz.sets.update',$set->id)}}" accept-charset="UTF-8" class="form-horizontal" role="form" id="edit-set">
+    <form method="POST" action="{{ route('admin.quiz.sets.update',$set)}}" accept-charset="UTF-8" class="form-horizontal" role="form" id="edit-set">
         {{ method_field('PATCH')}}
         {{ csrf_field() }}
         <div class="box box-success">
@@ -179,7 +179,7 @@
 @endsection
 
 @section('after-scripts')
-{{ Html::script('/js/handlebar.min.js') }}
+<script src="/js/handlebars.min.js"></script>
 <script id='question_template' type='text/x-handlebars-template'>
     <div class="question" data-question='@{{question_number}}'>
         <div class="box box-alert">

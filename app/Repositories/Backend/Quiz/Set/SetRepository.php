@@ -28,6 +28,7 @@ class SetRepository extends BaseRepository
                         'sets.id',
                         'sets.name',
                         'sets.year',
+                        'sets.slug',
                         'sets.created_at',
                         'sets.updated_at'
                     ])

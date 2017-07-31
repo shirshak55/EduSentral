@@ -28,7 +28,7 @@
                 <td>{{ $set->questions->count() }}</td>
                 <td>{{ $set->questions->sum('marks') }}</td>
                 <td>{{ $set->questions->sum('time') }}</td>
-                <td><a href='{{ route('frontend.quiz.set.questions',$set) }}' class='btn btn-primary' >Take this exam</a></td>
+                <td><a href='{{ route('frontend.quiz.set.questions.rules',$set) }}' class='btn btn-primary' >Take this exam</a></td>
             </tr>
         @endforeach
     </table>

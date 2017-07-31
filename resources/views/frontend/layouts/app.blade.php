@@ -44,6 +44,7 @@
         <script src='{{ mix('js/frontend.js') }}'></script>
         @yield('after-scripts')
 
+        @include('frontend.includes.footer')
         @include('includes.partials.ga')
     </body>
 </html>

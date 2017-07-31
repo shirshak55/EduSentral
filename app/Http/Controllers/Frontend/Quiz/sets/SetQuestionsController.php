@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Frontend\quiz\sets;
+namespace App\Http\Controllers\Frontend\Quiz\Sets;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Quiz\Set\Set;
+use App\Repositories\Frontend\Quiz\Set\QuestionRepository;
+use Illuminate\Http\Request;
 
 class SetQuestionsController extends Controller
 {
@@ -14,9 +16,14 @@ class SetQuestionsController extends Controller
         $this->questions = $questions;
     }
 
-    public function index($set)
+    public function index(Set $set)
     {
-        return view('frontend.quiz.setquestions.index');
+        $questions = $this->questions->getAllQuestions($set);
+        return view('frontend.quiz.setquestions.index',compact('questions','set'));
     }
-
+    public function showRules(Set $set)
+    {
+        $questions = $this->questions->getAllQuestions($set);
+        return view('frontend.quiz.setrules.index',compact('questions','set'));
+    }
 }

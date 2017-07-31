@@ -11,7 +11,7 @@
 
 @section('content')
 
-    <form method="POST" action="{{ route('admin.quiz.rules.update',$rule->id) }}" accept-charset="UTF-8" class="form-horizontal" role="form" id="edit-rule" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('admin.quiz.rules.update',$rule) }}" accept-charset="UTF-8" class="form-horizontal" role="form" id="edit-rule" enctype="multipart/form-data">
 
         {{ csrf_field() }} {{ method_field('PATCH') }}
 

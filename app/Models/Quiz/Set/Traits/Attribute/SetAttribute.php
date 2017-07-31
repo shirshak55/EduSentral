@@ -23,4 +23,15 @@ trait SetAttribute
     {
         return $this->edit_button.$this->delete_button;
     }
+
+    public function getDifficultyAttribute()
+    {
+        $easy     = ['very easy'=>$this->questions->sum('very easy')];
+        $easy     = ['easy'=>$this->questions->sum('easy')];
+        $moderate = ['moderate'=>$this->questions->sum('moderate')];
+        $hard     = ['hard'=>$this->questions->sum('hard')];
+        $hard     = ['very hard'=>$this->questions->sum('very hard')];
+
+        return ucwords(array_keys($array, max($array))[0]);
+    }
 }
