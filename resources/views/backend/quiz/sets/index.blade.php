@@ -53,8 +53,7 @@
 
 
 @section('after-scripts')
-    {{ Html::script("https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js") }}
-
+    <script src="https://cdn.datatables.net/v/bs/dt-1.10.15/datatables.min.js"></script>
         <script>
             $(function() {
                 $('#sets-table').DataTable({

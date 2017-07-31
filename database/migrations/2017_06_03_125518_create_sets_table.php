@@ -17,9 +17,9 @@ class CreateSetsTable extends Migration
             $table->increments('id');
 
             $table->string('name');
+            $table->string('slug')->unique();
             $table->unsignedInteger('year');
             $table->unsignedInteger('rule_id')->nullable();
-
             $table->unsignedInteger('board_id')->indexed();
 
             $table->timestamps();

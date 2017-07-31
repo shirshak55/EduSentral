@@ -26,7 +26,7 @@ class SetsTableController extends Controller
     public function invoke(ManageRuleRequest $request)
     {
         return Datatables::of($this->sets->getForDataTable())
-        ->escapeColumns(['name', 'year'])
+        ->escapeColumns(['name', 'year','created_at','updated_at'])
         ->addColumn('actions', function ($set) {
             return $set->action_buttons;
         })

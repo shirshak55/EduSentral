@@ -3,7 +3,7 @@
        Menu <i class="fa fa-bars"></i>
    </button>
    <div class="container">
-       <a class="navbar-brand" href="#page-top">{{ app_name() }}</a>
+       <a class="navbar-brand" href="{{ route('frontend.index') }}">{{ app_name() }}</a>
        <div class="collapse navbar-collapse" id="navbarExample">
            <ul class="navbar-nav ml-auto">
                <li class="nav-item">
@@ -15,7 +15,7 @@
                <li class="nav-item">
                    <a class="nav-link" href="#study_materials">Study Materials</a>
                </li>
-               @if (! $logged_in_user)
+               @if ( $logged_in_user)
                 <li class="nav-item">
                     <a class="nav-link" href="#study_materials">{{ $logged_in_user->name }} <span class="caret"></span></a>
                 </li>

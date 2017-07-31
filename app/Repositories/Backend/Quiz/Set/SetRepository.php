@@ -31,8 +31,7 @@ class SetRepository extends BaseRepository
                         'sets.created_at',
                         'sets.updated_at'
                     ])
-                    ->orderBy($order_by, $sort)
-                    ->get();
+                    ->orderBy($order_by, $sort);
     }
 
     public function create(array $input)

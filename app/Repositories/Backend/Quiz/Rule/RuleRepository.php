@@ -37,8 +37,7 @@ class RuleRepository extends BaseRepository
                 'rules.created_at',
                 'rules.updated_at',
             ])
-            ->orderBy($order_by, $sort)
-            ->get();
+            ->orderBy($order_by, $sort);
     }
 
     /**

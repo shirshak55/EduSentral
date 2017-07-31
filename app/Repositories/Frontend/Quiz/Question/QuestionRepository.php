@@ -17,4 +17,9 @@ class QuestionRepository extends BaseRepository
      */
     const MODEL = Question::class;
 
+    public function getAllQuestions($set)
+    {
+        return $set->questions;
+    }
+
 }

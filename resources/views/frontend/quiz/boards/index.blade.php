@@ -1,6 +1,6 @@
 @extends('frontend.layouts.app')
 
-@section('title', app_name() . ' | Boards')
+@section('title',  'Boards | '.app_name())
 
 @section('content')
 <div class="jumbotron">

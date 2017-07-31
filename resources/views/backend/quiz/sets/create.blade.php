@@ -123,7 +123,7 @@
 @endsection
 
 @section('after-scripts')
-{{ Html::script('/js/handlebar.min.js') }}
+<script src="/js/handlebars.min.js"></script>
 <script id='question_template' type='text/x-handlebars-template'>
     <div class="question" data-question='@{{question_number}}'>
         <div class="box box-alert">

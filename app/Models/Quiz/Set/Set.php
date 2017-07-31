@@ -7,6 +7,8 @@ use App\Models\Quiz\Set\Traits\Relationship\SetRelationship;
 use App\Models\Quiz\Set\Traits\Scope\SetScope;
 use App\Models\Quiz\Set\Traits\SetAccess;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Set extends Model
 {
@@ -14,4 +16,19 @@ class Set extends Model
         SetRelationship,
         SetScope,
         SetAccess;
+
+    public function getSlugOptions(): SlugOptions
+    {
+        return SlugOptions::create()
+                ->generateSlugsFrom('name')
+                ->saveSlugsTo('slug')
+                ->usingSeparator('-')
+                ->slugsShouldBeNoLongerThan(50)
+                ->doNotGenerateSlugsOnUpdate();
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

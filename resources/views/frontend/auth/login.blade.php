@@ -4,14 +4,11 @@
 
 @section('content')
 
-    <div class="row">
+        <div class="col-md-8 offset-2">
+            <div class="card">
+                <div class="card-header">{{ trans('labels.frontend.auth.login_box_title') }}</div>
 
-        <div class="col-md-8 col-md-offset-2">
-
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ trans('labels.frontend.auth.login_box_title') }}</div>
-
-                <div class="panel-body">
+                <div class="card-block">
 
                     {{ Form::open(['route' => 'frontend.auth.login.post', 'class' => 'form-horizontal']) }}
 
@@ -41,23 +38,21 @@
 
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-4">
-                            {{ Form::submit(trans('labels.frontend.auth.login_button'), ['class' => 'btn btn-primary', 'style' => 'margin-right:15px']) }}
-
-                            {{ link_to_route('frontend.auth.password.reset', trans('labels.frontend.passwords.forgot_password')) }}
-                        </div><!--col-md-6-->
-                    </div><!--form-group-->
-
+                            <div class="btn-group">
+                                <button type='submit' class='btn btn-primary'>{{ trans('labels.frontend.auth.login_button') }}</button>
+                                <a href="{{ route('frontend.auth.password.reset') }}" class= 'btn btn-danger'>{{ trans('labels.frontend.passwords.forgot_password') }}</a>
+                                <a href="{{ route('frontend.auth.password.reset') }}" class= 'btn btn-warning'>Register</a>
+                            </div>
+                        </div>
+                    </div>
                     {{ Form::close() }}
 
                     <div class="row text-center">
                         {!! $socialite_links !!}
                     </div>
-                </div><!-- panel body -->
+                </div>
 
-            </div><!-- panel -->
+            </div>
 
-        </div><!-- col-md-8 -->
-
-    </div><!-- row -->
-
+        </div>
 @endsection

@@ -26,7 +26,7 @@ class RulesTableController extends Controller
     public function __invoke(ManageRuleRequest $request)
     {
         return Datatables::of($this->rules->getForDataTable())
-        ->escapeColumns(['name', 'content'])
+        ->escapeColumns(['name', 'content','created_at','updated_at'])
         ->addColumn('actions', function ($rule) {
             return $rule->action_buttons;
         })
