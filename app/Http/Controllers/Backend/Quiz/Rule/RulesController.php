@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend\Quiz\Rule;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\Quiz\Rule\ManageRuleRequest;
 use App\Http\Requests\Backend\Quiz\Rule\StoreRuleRequest;
+use App\Http\Requests\Backend\Quiz\Rule\UpdateRuleRequest;
 use App\Models\Quiz\Rule\Rule;
 use App\Repositories\Backend\Quiz\Rule\RuleRepository;
 use Illuminate\Http\Request;
@@ -50,7 +51,7 @@ class RulesController extends Controller
                     ->withRule($rule);
     }
 
-    public function update(StoreRuleRequest $request, Rule $rule)
+    public function update(UpdateRuleRequest $request, Rule $rule)
     {
         $this->rules->update($rule,$request->only(['name','content']));
 

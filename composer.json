@@ -21,6 +21,7 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "5.4.*",
+        "spatie/laravel-fractal": "^4.3",
         "spatie/laravel-sluggable": "^1.5",
         "yajra/laravel-datatables-oracle": "^7.0"
     },
