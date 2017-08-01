@@ -29,7 +29,7 @@
             ]); ?>
         </script>
     </head>
-    <body id="page-top">
+    <body id="page-top" class='not-index'>
         <div id="app">
             @include('frontend.includes.nav')
             @include('frontend.includes.header')

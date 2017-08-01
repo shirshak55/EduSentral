@@ -7,9 +7,10 @@ body {
 
 body {
     @include body-font;
+}
+.not-index{
     padding-top: 65px;
 }
-
 a {
     color: $theme-primary;
     @include transition-all;

@@ -39,7 +39,7 @@
 
     <div class="row">
         <div class="col-md-8">
-            <form action="{{ route('frontend.quiz.results') }}" method='POST' enctype="multipart/form-data">
+            <form action="{{ route('frontend.quiz.results.store', [$logged_in_user,$set]) }}" method='post' enctype="multipart/form-data">
                 {{ csrf_field() }}
                 @foreach($questions as $question)
                     <div class="card mb-4">
@@ -49,7 +49,7 @@
                             <ul class='list-group'>
                                 @foreach($question->answers as $answer)
                                     <li class='list-group-item'>
-                                        <input type="checkbox" class='question_list_checkbox' name='answer_{{ $question->id }}_{{ $answer->id }}'>
+                                        <input type="checkbox" class='question_list_checkbox' name='answers[{{ $question->id }}][{{ $answer->id }}]'>
                                         {{ $answer->content }}
                                     </li>
                                 @endforeach

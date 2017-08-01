@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Frontend\Quiz;
+namespace App\Http\Requests\Frontend\Quiz\Result;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -13,7 +13,7 @@ class StoreResultRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return auth()->check();
     }
 
     /**

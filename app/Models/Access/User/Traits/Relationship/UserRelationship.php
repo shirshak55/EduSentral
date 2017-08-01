@@ -2,8 +2,9 @@
 
 namespace App\Models\Access\User\Traits\Relationship;
 
-use App\Models\System\Session;
 use App\Models\Access\User\SocialLogin;
+use App\Models\Quiz\Result\Result;
+use App\Models\System\Session;
 
 /**
  * Class UserRelationship.
@@ -34,5 +35,10 @@ trait UserRelationship
     public function sessions()
     {
         return $this->hasMany(Session::class);
+    }
+
+    public function results()
+    {
+        return $this->hasMany(Result::class);
     }
 }
