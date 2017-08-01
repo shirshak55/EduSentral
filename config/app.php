@@ -187,6 +187,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Yajra\Datatables\DatatablesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Spatie\Fractal\FractalServiceProvider::class,
 
         /*
          * Laravel Official Packages
@@ -267,6 +268,7 @@ return [
         'Html'        => Collective\Html\HtmlFacade::class,
         'Socialite'   => Laravel\Socialite\Facades\Socialite::class,
         'Image' => Intervention\Image\Facades\Image::class,
+        'Fractal' => Spatie\Fractal\FractalFacade::class,
 
     ],
 
