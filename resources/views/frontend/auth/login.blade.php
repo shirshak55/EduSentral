@@ -9,6 +9,7 @@
         <div class="card-header">{{ trans('labels.frontend.auth.login_box_title') }}</div>
 
         <div class="card-block">
+            <div class="text-center mb-4"><div class='btn-group'>{!! $socialite_links !!}</div></div>
             {{ Form::open(['route' => 'frontend.auth.login.post', 'class' => 'form-horizontal']) }}
                 <div class="form-group row">
                     {{ Form::label('email', trans('validation.attributes.frontend.email'), ['class' => 'col-4 col-form-label']) }}
@@ -46,9 +47,6 @@
             {{ Form::close() }}
 
 
-            <div class="row text-center">
-                {!! $socialite_links !!}
-            </div>
         </div>
 
     </div>

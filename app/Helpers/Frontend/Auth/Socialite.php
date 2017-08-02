@@ -22,15 +22,15 @@ class Socialite
         }
 
         if (config('services.facebook.client_id')) {
-            $socialite_enable[] = link_to_route('frontend.auth.social.login', trans('labels.frontend.auth.login_with', ['social_media' => 'Facebook']), 'facebook');
+            $socialite_enable[] = link_to_route('frontend.auth.social.login', trans('labels.frontend.auth.login_with', ['social_media' => 'Facebook']), 'facebook',['class'=>'btn btn-success']);
         }
 
         if (config('services.google.client_id')) {
-            $socialite_enable[] = link_to_route('frontend.auth.social.login', trans('labels.frontend.auth.login_with', ['social_media' => 'Google']), 'google');
+            $socialite_enable[] = link_to_route('frontend.auth.social.login', trans('labels.frontend.auth.login_with', ['social_media' => 'Google']), 'google',['class'=>'btn btn-danger']);
         }
 
         if (config('services.github.client_id')) {
-            $socialite_enable[] = link_to_route('frontend.auth.social.login', trans('labels.frontend.auth.login_with', ['social_media' => 'Github']), 'github');
+            $socialite_enable[] = link_to_route('frontend.auth.social.login', trans('labels.frontend.auth.login_with', ['social_media' => 'Github']), 'github',['class'=>'btn btn-warning']);
         }
 
         if (config('services.linkedin.client_id')) {
@@ -42,7 +42,7 @@ class Socialite
         }
 
         for ($i = 0; $i < count($socialite_enable); $i++) {
-            $socialite_links .= ($socialite_links != '' ? '&nbsp;|&nbsp;' : '').$socialite_enable[$i];
+            $socialite_links .= ($socialite_links != '' ? '' : '').$socialite_enable[$i];
         }
 
         return $socialite_links;

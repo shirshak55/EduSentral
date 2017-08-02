@@ -203,7 +203,7 @@ return [
         'auth' => [
             'login_box_title'    => 'Login',
             'login_button'       => 'Login',
-            'login_with'         => 'Login with :social_media',
+            'login_with'         => ':social_media',
             'register_box_title' => 'Register',
             'register_button'    => 'Register',
             'remember_me'        => 'Remember Me',
@@ -218,7 +218,7 @@ return [
             'forgot_password'                 => 'Forgot Your Password?',
             'reset_password_box_title'        => 'Reset Password',
             'reset_password_button'           => 'Reset Password',
-            'send_password_reset_link_button' => 'Send Password Reset Link',
+            'send_password_reset_link_button' => 'Send Reset link',
         ],
 
         'macros' => [

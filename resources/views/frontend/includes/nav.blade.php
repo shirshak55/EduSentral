@@ -12,20 +12,20 @@
                <li class="nav-item">
                    <a class="nav-link" href="#subjects">Subjects</a>
                </li>
-               <li class="nav-item">
-                   <a class="nav-link" href="#study_materials">Study Materials</a>
-               </li>
                @if ( $logged_in_user)
                 <li class="nav-item">
-                    <a class="nav-link" href="#study_materials">{{ $logged_in_user->name }} <span class="caret"></span></a>
+                    <a class="nav-link" href="#study_materials">{{ $logged_in_user->name }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('frontend.auth.logout')}}">{{ trans('navs.general.logout') }}</a>
                 </li>
                @endif
                @if (! $logged_in_user)
                    <li class="nav-item">
-                       <a class="nav-link" href="{{ route('frontend.auth.login') }}" class='{{  active_class(Active::checkRoute('frontend.auth.login')) }}'>Login</a>
+                       <a class="nav-link" href="{{ route('frontend.auth.login') }}" class='{{  active_class(Active::checkRoute('frontend.auth.login')) }}'>{{ trans('navs.frontend.login') }}</a>
                    </li>
                    <li class="nav-item">
-                       <a class="nav-link" href="{{ route('frontend.auth.register') }}" class='{{  active_class(Active::checkRoute('frontend.auth.register'))}}'>Register</a>
+                       <a class="nav-link" href="{{ route('frontend.auth.register') }}" class='{{  active_class(Active::checkRoute('frontend.auth.register'))}}'>{{ trans('navs.frontend.register') }}</a>
                    </li>
                @endif
            </ul>
