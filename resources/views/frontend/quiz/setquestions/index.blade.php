@@ -36,27 +36,12 @@
         </div>
 
     </div>
-
-    <div class="row">
-        <div class="col-md-8">
-            <form action="{{ route('frontend.quiz.results.store', [$logged_in_user,$set]) }}" method='post' enctype="multipart/form-data">
-                {{ csrf_field() }}
-                @foreach($questions as $question)
-                    <div class="card mb-4">
-                        <div class="card-header">Question Number {{ $question->sort }}</div>
-                        <div class="card-block">
-                            <p class='card-text'>{!! $question->content !!}</p>
-                            <ul class='list-group'>
-                                @foreach($question->answers as $answer)
-                                    <li class='list-group-item'>
-                                        <input type="checkbox" class='question_list_checkbox' name='answers[{{ $question->id }}][{{ $answer->id }}]'>
-                                        {{ $answer->content }}
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    </div>
-                @endforeach
+    <div class="questionApp" ng-app='questionApp'>
+        <div class="row" ng-controller='questions'>
+            <div class="col-md-8">
+                    <question ng-repeat='questions in question'>
+                        <answers></answers>
+                    </question>
 
                     <div class="card mb-4">
                         <div class="card-header">Submit To Get Result</div>
@@ -66,47 +51,51 @@
                             <button type='submit' class='btn btn-success float-right'>Get Result</button>
                         </div>
                     </div>
-            </form>
-        </div>
-        <div class="col-md-4">
-            <div class="card mb-4 ">
-                <div class="card-header">Student Help Section</div>
-                <div class="card-block">
-                    <p>Time Remaining: <mark>120 Minutes</mark></p>
-                    <p>Be Patient While Giving Exams</p>
-                    <p>Don't cheat . Cheating here means cheating yourself</p>
-                </div>
             </div>
-
-            <div class="card mb-4">
-                <div class="card-header">Statistics</div>
-                <div class="card-block">
-                    <table class='table table-bordered'>
-                        <tr>
-                            <td>Completed</td>
-                            <td>10</td>
-                        </tr>
-                        <tr>
-                            <td>Incomplete</td>
-                            <td>90</td>
-                        </tr>
-                    </table>
+            <div class="col-md-4">
+                <div class="card mb-4 ">
+                    <div class="card-header">Student Help Section</div>
+                    <div class="card-block">
+                        <p>Time Remaining: <exam-timer>120 Minutes</exam-timer></p>
+                        <p>Be Patient While Giving Exams</p>
+                        <p>Don't cheat . Cheating here means cheating yourself</p>
+                    </div>
                 </div>
-            </div>
 
-            <div class="card mb-4">
-                <div class="card-header">Question Completed</div>
-                <div class="card-block">
+                <div class="card mb-4">
+                    <div class="card-header">Statistics</div>
+                    <div class="card-block">
+                        <table class='table table-bordered'>
+                            <tr>
+                                <td>Completed</td>
+                                <td>@{{ statistics.completed }}</td>
+                            </tr>
+                            <tr>
+                                <td>Incomplete</td>
+                                <td>@{{ statistics.incomplete }}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
 
-                    <ul>
-                        <li>Blue means done</li>
-                        <li>White means not done</li>
-                    </ul>
+                <div class="card mb-4">
+                    <div class="card-header">Question Completed</div>
+                    <div class="card-block">
+
+                        <ul>
+                            <li>Blue means done</li>
+                            <li>White means not done</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+@endsection
+
+@section('before-styles')
+    <meta  name='slug' content='{{ $set->slug }}' />
 @endsection
 
 @section('after-styles')
@@ -120,3 +109,9 @@
 </style>
 @endsection
 
+@section('after-scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-resource.min.js"></script>
+    <script src='/js/questions.js'></script>
+@endsection

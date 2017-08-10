@@ -41,7 +41,7 @@
         </div>
 
         @yield('before-scripts')
-        <script src='{{ mix('js/frontend.js') }}'></script>
+       {{--  <script src='{{ mix('js/frontend.js') }}'></script> --}}
         @yield('after-scripts')
 
         @include('frontend.includes.footer')
