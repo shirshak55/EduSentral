@@ -8,5 +8,7 @@ Route::group([
     'as'         => 'quiz.',
     'namespace'  => 'Quiz',
 ], function () {
-    Route::get('questions','QuestionsController@index');
+    Route::get('boards','BoardsController@index');
+    Route::get('{board}/sets','SetsController@index');
+    Route::get('sets/{set}','SetsController@show');
 });

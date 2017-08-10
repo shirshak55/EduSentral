@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend\Quiz\Sets;
 
 use App\Http\Controllers\Controller;
 use App\Models\Quiz\Set\Set;
-use App\Repositories\Frontend\Quiz\Set\QuestionRepository;
+use App\Repositories\Frontend\Quiz\Question\QuestionRepository;
 use Illuminate\Http\Request;
 
 class SetQuestionsController extends Controller
