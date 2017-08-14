@@ -6,6 +6,32 @@ Statistics:
 Total Number of Tables: 16
 ```
 
+## List Of Tables
+|Table Name|
+|---|
+| answers        |
+| board_subject  |
+| boards         |
+| correct_answers|
+| history        |
+| history_types  |
+| meta           |
+| migrations     |
+| password_resets|
+| permission_role|
+| permissions    |
+| questions      |
+| results        |
+| role_user      |
+| roles          |
+| rules          |
+| sessions       |
+| sets           |
+| social_logins  |
+| subjects       |
+| users          |
+
+
 ### User
 
 ```
