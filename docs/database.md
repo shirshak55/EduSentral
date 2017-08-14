@@ -31,176 +31,258 @@ Total Number of Tables: 16
 | subjects       |
 | users          |
 
++-------------+------------------+------+-----+---------+----------------+
+| Field       | Type             | Null | Key | Default | Extra          |
++-------------+------------------+------+-----+---------+----------------+
+| id          | int(10) unsigned | NO   | PRI |         | auto_increment |
+| question_id | int(10) unsigned | NO   | MUL |         |                |
+| content     | text             | NO   |     |         |                |
+| sort        | int(10) unsigned | NO   |     |         |                |
+| created_at  | timestamp        | YES  |     |         |                |
+| updated_at  | timestamp        | YES  |     |         |                |
++-------------+------------------+------+-----+---------+----------------+
 
-### User
+board_subject (rows: 0)
++------------+------------------+------+-----+---------+----------------+
+| Field      | Type             | Null | Key | Default | Extra          |
++------------+------------------+------+-----+---------+----------------+
+| id         | int(10) unsigned | NO   | PRI |         | auto_increment |
+| board_id   | varchar(191)     | NO   |     |         |                |
+| set_id     | int(10) unsigned | NO   |     |         |                |
+| created_at | timestamp        | YES  |     |         |                |
+| updated_at | timestamp        | YES  |     |         |                |
++------------+------------------+------+-----+---------+----------------+
 
-```
-Table Name: users
-Description: It stores basic user informations like their login details etc..
-```
+boards (rows: 4)
++-------------+------------------+------+-----+---------+----------------+
+| Field       | Type             | Null | Key | Default | Extra          |
++-------------+------------------+------+-----+---------+----------------+
+| id          | int(10) unsigned | NO   | PRI |         | auto_increment |
+| name        | varchar(191)     | NO   | UNI |         |                |
+| description | text             | NO   |     |         |                |
+| location    | varchar(191)     | NO   |     |         |                |
+| image       | varchar(191)     | NO   |     |         |                |
+| created_at  | timestamp        | YES  |     |         |                |
+| updated_at  | timestamp        | YES  |     |         |                |
+| slug        | varchar(191)     | YES  |     |         |                |
++-------------+------------------+------+-----+---------+----------------+
 
-| Attribute | Type | Details |
-|---|---|---|
-| id | integer | autoincrement |
-| name | string | Full Name of User |
-| username | string | unique |
-| email_address | string | unique, Nullable |
-| password | string | encrypted using bcrypt |
-| avatar | string | Default: default-avatar.png |
-| remember_token | string | encrypted  |
+correct_answers (rows: 25)
++-------------+------------------+------+-----+---------+----------------+
+| Field       | Type             | Null | Key | Default | Extra          |
++-------------+------------------+------+-----+---------+----------------+
+| id          | int(10) unsigned | NO   | PRI |         | auto_increment |
+| question_id | int(10) unsigned | NO   | MUL |         |                |
+| answer_id   | int(10) unsigned | NO   | MUL |         |                |
+| created_at  | timestamp        | YES  |     |         |                |
+| updated_at  | timestamp        | YES  |     |         |                |
++-------------+------------------+------+-----+---------+----------------+
 
-### Password Reset
+history (rows: 2)
++------------+------------------+------+-----+---------+----------------+
+| Field      | Type             | Null | Key | Default | Extra          |
++------------+------------------+------+-----+---------+----------------+
+| id         | int(10) unsigned | NO   | PRI |         | auto_increment |
+| type_id    | int(10) unsigned | NO   | MUL |         |                |
+| user_id    | int(10) unsigned | NO   | MUL |         |                |
+| entity_id  | int(10) unsigned | YES  |     |         |                |
+| icon       | varchar(191)     | YES  |     |         |                |
+| class      | varchar(191)     | YES  |     |         |                |
+| text       | varchar(191)     | NO   |     |         |                |
+| assets     | text             | YES  |     |         |                |
+| created_at | timestamp        | YES  |     |         |                |
+| updated_at | timestamp        | YES  |     |         |                |
++------------+------------------+------+-----+---------+----------------+
 
-```
-Table Name: password_reset
-Description: It stores unique token and user email for facilating password reset
-```
+history_types (rows: 2)
++------------+------------------+------+-----+---------+----------------+
+| Field      | Type             | Null | Key | Default | Extra          |
++------------+------------------+------+-----+---------+----------------+
+| id         | int(10) unsigned | NO   | PRI |         | auto_increment |
+| name       | varchar(191)     | NO   |     |         |                |
+| created_at | timestamp        | YES  |     |         |                |
+| updated_at | timestamp        | YES  |     |         |                |
++------------+------------------+------+-----+---------+----------------+
 
-| Attribute | Type | Details |
-|---|---|---|
-|email|string||
-|token|string||
-|created_at|timestamps||
+meta (rows: 0)
++--------------+------------------+------+-----+---------+----------------+
+| Field        | Type             | Null | Key | Default | Extra          |
++--------------+------------------+------+-----+---------+----------------+
+| id           | int(10) unsigned | NO   | PRI |         | auto_increment |
+| metable_type | varchar(191)     | NO   | MUL |         |                |
+| metable_id   | int(10) unsigned | NO   |     |         |                |
+| type         | varchar(191)     | NO   |     | null    |                |
+| key          | varchar(191)     | NO   | MUL |         |                |
+| value        | longtext         | NO   |     |         |                |
++--------------+------------------+------+-----+---------+----------------+
 
-### Metable
+migrations (rows: 21)
++-----------+------------------+------+-----+---------+----------------+
+| Field     | Type             | Null | Key | Default | Extra          |
++-----------+------------------+------+-----+---------+----------------+
+| id        | int(10) unsigned | NO   | PRI |         | auto_increment |
+| migration | varchar(191)     | NO   |     |         |                |
+| batch     | int(11)          | NO   |     |         |                |
++-----------+------------------+------+-----+---------+----------------+
 
-```
-Table Name: meta
-Description: It stores additional details using polymorphism. Like We can add more details about `user` like this `bio`
-```
+password_resets (rows: 0)
++------------+--------------+------+-----+---------+-------+
+| Field      | Type         | Null | Key | Default | Extra |
++------------+--------------+------+-----+---------+-------+
+| email      | varchar(191) | NO   | MUL |         |       |
+| token      | varchar(191) | NO   |     |         |       |
+| created_at | timestamp    | YES  |     |         |       |
++------------+--------------+------+-----+---------+-------+
 
-| Attribute | Type | Details |
-|---|---|---|
-|id|Integer|autoincremented|
-|metable_type|string|like User,Board etc.|
-|metable_id|integer|like corresponding user_id, board_id|
-|type|string|default:null like array, json etc.|
-|key|string|indexed|
-|value|longtext||
+permission_role (rows: 1)
++---------------+------------------+------+-----+---------+----------------+
+| Field         | Type             | Null | Key | Default | Extra          |
++---------------+------------------+------+-----+---------+----------------+
+| id            | int(10) unsigned | NO   | PRI |         | auto_increment |
+| permission_id | int(10) unsigned | NO   | MUL |         |                |
+| role_id       | int(10) unsigned | NO   | MUL |         |                |
++---------------+------------------+------+-----+---------+----------------+
 
+permissions (rows: 1)
++--------------+------------------+------+-----+---------+----------------+
+| Field        | Type             | Null | Key | Default | Extra          |
++--------------+------------------+------+-----+---------+----------------+
+| id           | int(10) unsigned | NO   | PRI |         | auto_increment |
+| name         | varchar(191)     | NO   | UNI |         |                |
+| display_name | varchar(191)     | NO   |     |         |                |
+| created_at   | timestamp        | YES  |     |         |                |
+| updated_at   | timestamp        | YES  |     |         |                |
++--------------+------------------+------+-----+---------+----------------+
 
-### Board
+questions (rows: 22)
++-------------------+------------------+------+-----+---------+----------------+
+| Field             | Type             | Null | Key | Default | Extra          |
++-------------------+------------------+------+-----+---------+----------------+
+| id                | int(10) unsigned | NO   | PRI |         | auto_increment |
+| content           | text             | YES  |     |         |                |
+| difficulty        | varchar(191)     | YES  |     |         |                |
+| marks             | int(11)          | NO   |     |         |                |
+| time              | int(11)          | NO   |     |         |                |
+| sort              | int(11)          | NO   |     |         |                |
+| questionable_type | varchar(191)     | NO   |     |         |                |
+| questionable_id   | int(10) unsigned | NO   |     |         |                |
+| created_at        | timestamp        | YES  |     |         |                |
+| updated_at        | timestamp        | YES  |     |         |                |
++-------------------+------------------+------+-----+---------+----------------+
 
+results (rows: 12)
++---------------------+------------------+------+-----+---------+----------------+
+| Field               | Type             | Null | Key | Default | Extra          |
++---------------------+------------------+------+-----+---------+----------------+
+| id                  | int(10) unsigned | NO   | PRI |         | auto_increment |
+| user_id             | int(10) unsigned | NO   | MUL |         |                |
+| resultable_type     | varchar(191)     | NO   |     |         |                |
+| resultable_id       | int(10) unsigned | NO   |     |         |                |
+| percentage          | int(10) unsigned | NO   |     |         |                |
+| incorrect_questions | text             | NO   |     |         |                |
+| exam_data           | text             | NO   |     |         |                |
+| created_at          | timestamp        | YES  |     |         |                |
+| updated_at          | timestamp        | YES  |     |         |                |
++---------------------+------------------+------+-----+---------+----------------+
 
-```
-Table Name: boards
-Description: It includes details of boards like `St Xavier` `Kathmandu University` `IOE` `IOM`.
-```
+role_user (rows: 5)
++---------+------------------+------+-----+---------+----------------+
+| Field   | Type             | Null | Key | Default | Extra          |
++---------+------------------+------+-----+---------+----------------+
+| id      | int(10) unsigned | NO   | PRI |         | auto_increment |
+| user_id | int(10) unsigned | NO   | MUL |         |                |
+| role_id | int(10) unsigned | NO   | MUL |         |                |
++---------+------------------+------+-----+---------+----------------+
 
-| Attribute | Type | Details |
-|---|---|---|
-| id| integer| autoincrement|
-| name| string||
-| description| text|nullable|
-| location| string|nullable|
-| image| string|nullable,path to image including its name|
+roles (rows: 3)
++------------+----------------------+------+-----+---------+----------------+
+| Field      | Type                 | Null | Key | Default | Extra          |
++------------+----------------------+------+-----+---------+----------------+
+| id         | int(10) unsigned     | NO   | PRI |         | auto_increment |
+| name       | varchar(191)         | NO   | UNI |         |                |
+| all        | tinyint(1)           | NO   |     | 0       |                |
+| sort       | smallint(5) unsigned | NO   |     | 0       |                |
+| created_at | timestamp            | YES  |     |         |                |
+| updated_at | timestamp            | YES  |     |         |                |
++------------+----------------------+------+-----+---------+----------------+
 
-### Set
+rules (rows: 5)
++------------+------------------+------+-----+---------+----------------+
+| Field      | Type             | Null | Key | Default | Extra          |
++------------+------------------+------+-----+---------+----------------+
+| id         | int(10) unsigned | NO   | PRI |         | auto_increment |
+| name       | varchar(191)     | NO   | UNI |         |                |
+| content    | text             | NO   |     |         |                |
+| created_at | timestamp        | YES  |     |         |                |
+| updated_at | timestamp        | YES  |     |         |                |
++------------+------------------+------+-----+---------+----------------+
 
+sessions (rows: 6)
++---------------+------------------+------+-----+---------+-------+
+| Field         | Type             | Null | Key | Default | Extra |
++---------------+------------------+------+-----+---------+-------+
+| id            | varchar(191)     | NO   | PRI |         |       |
+| user_id       | int(10) unsigned | YES  |     |         |       |
+| ip_address    | varchar(45)      | YES  |     |         |       |
+| user_agent    | text             | YES  |     |         |       |
+| payload       | text             | NO   |     |         |       |
+| last_activity | int(11)          | NO   |     |         |       |
++---------------+------------------+------+-----+---------+-------+
 
-```
-Table Name: sets
-Description: Example is `IOE SET 2017` `KU Set 2016`
-```
+sets (rows: 4)
++------------+------------------+------+-----+---------+----------------+
+| Field      | Type             | Null | Key | Default | Extra          |
++------------+------------------+------+-----+---------+----------------+
+| id         | int(10) unsigned | NO   | PRI |         | auto_increment |
+| name       | varchar(191)     | NO   |     |         |                |
+| year       | int(10) unsigned | NO   |     |         |                |
+| rule_id    | int(10) unsigned | YES  |     |         |                |
+| board_id   | int(10) unsigned | NO   |     |         |                |
+| created_at | timestamp        | YES  |     |         |                |
+| updated_at | timestamp        | YES  |     |         |                |
+| slug       | varchar(191)     | YES  |     |         |                |
++------------+------------------+------+-----+---------+----------------+
 
-| Attribute | Type | Details |
-|---|---|---|
-| id | integer| autoincrement|
-| name | string|  |
-| year | Timestamp|  |
-| board_id|unsigned integer| ID of corresponding board|
-| question_rules_id| integer| indexed,nullable, points to row in question_rules table  |
+social_logins (rows: 3)
++-------------+------------------+------+-----+---------+----------------+
+| Field       | Type             | Null | Key | Default | Extra          |
++-------------+------------------+------+-----+---------+----------------+
+| id          | int(10) unsigned | NO   | PRI |         | auto_increment |
+| user_id     | int(10) unsigned | NO   | MUL |         |                |
+| provider    | varchar(32)      | NO   |     |         |                |
+| provider_id | varchar(191)     | NO   |     |         |                |
+| token       | varchar(191)     | YES  |     |         |                |
+| avatar      | varchar(191)     | YES  |     |         |                |
+| created_at  | timestamp        | YES  |     |         |                |
+| updated_at  | timestamp        | YES  |     |         |                |
++-------------+------------------+------+-----+---------+----------------+
 
+subjects (rows: 0)
++-------------+------------------+------+-----+---------+----------------+
+| Field       | Type             | Null | Key | Default | Extra          |
++-------------+------------------+------+-----+---------+----------------+
+| id          | int(10) unsigned | NO   | PRI |         | auto_increment |
+| name        | varchar(191)     | NO   |     |         |                |
+| description | text             | YES  |     |         |                |
+| image       | varchar(191)     | NO   |     |         |                |
+| created_at  | timestamp        | YES  |     |         |                |
+| updated_at  | timestamp        | YES  |     |         |                |
++-------------+------------------+------+-----+---------+----------------+
 
-###  Subjects
-
-
-```
-Table Name: subjects
-Description: It stores subjects like `Physics`, `Chemistry` etc..
-```
-
-| Attribute | Type | Details |
-|---|---|---|
-| id| integer||
-| name| string||
-| description| text|nullable|
-| image| text|nullable|
-
-
-### Board Subject
-
-
-```
-Table Name: board_subject
-Description: It  relates subjects and boards
-```
-
-| Attribute | Type | Details |
-|---|---|---|
-| id | integer|  autoincrement|
-| board_id | unsigned integer | Board ID |
-| subject_id | unsigned integer | Subject ID  |
-
-### Question
-
-```
-Table Name: questions
-Description: It is the table which store details of question like its content, difficulty, marks, time.
-```
-
-| Attribute | Type | Details |
-|---|---|---|
-| id| integer| autoincrement|
-| content| text|  |
-| difficulty| string| nullable |
-| marks| integer| |
-| time| integer| Time in second|
-
-
-
-### Answer
-
-```
-Table Name: answers
-Description: It contains answer to MCQ . It contains both correct and wrong answer.
-```
-
-| Attribute | Type | Details |
-|---|---|---|
-| id |integer| autoincrement |
-| question_id| integer| indexed, unsigned, points to question table |
-| content| text|  |
-
-### Correct Answer
-
-
-```
-Table Name: correct_answers
-Description: It is pivot table for addressing correct answer from the question.
-```
-
-| Attribute | Type | Details |
-|---|---|---|
-| id |integer| autoincrement |
-| question_id| integer| indexed,unsigned, references id on questions table |
-| answer_id| integer| indexed,unsigned, references id on answers table|
-
-
-### Rule
-
-
-```
-Table Name: rules
-Description: Various Rules like `IOE Rules`, `St. Xavier` Rules will be stored here.
-```
-
-| Attribute | Type | Details |
-|---|---|---|
-| id| integer| autoincrement|
-| name| string|  |
-| content| text|
-
-## Tables Regarding Roles And Permissions
-
-> There are altogether 5 tables for roles and permission management.
+users (rows: 5)
++-------------------+---------------------+------+-----+---------+----------------+
+| Field             | Type                | Null | Key | Default | Extra          |
++-------------------+---------------------+------+-----+---------+----------------+
+| id                | int(10) unsigned    | NO   | PRI |         | auto_increment |
+| first_name        | varchar(191)        | NO   |     |         |                |
+| last_name         | varchar(191)        | NO   |     |         |                |
+| email             | varchar(191)        | NO   | UNI |         |                |
+| password          | varchar(191)        | YES  |     |         |                |
+| status            | tinyint(3) unsigned | NO   |     | 1       |                |
+| confirmation_code | varchar(191)        | YES  |     |         |                |
+| confirmed         | tinyint(1)          | NO   |     | 0       |                |
+| remember_token    | varchar(100)        | YES  |     |         |                |
+| created_at        | timestamp           | YES  |     |         |                |
+| updated_at        | timestamp           | YES  |     |         |                |
+| deleted_at        | timestamp           | YES  |     |         |                |
++-------------------+---------------------+------+-----+---------+----------------+
