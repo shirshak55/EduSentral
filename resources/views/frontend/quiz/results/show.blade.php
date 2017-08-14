@@ -23,13 +23,18 @@
                 </tr>
 
                 <tr class='table-success'>
-                    <td>Marks</td>
+                    <td>Obtained Marks</td>
                     <td>{{ $result->resultable->questions->sum('marks') }}</td>
                 </tr>
 
                 <tr class='table-danger'>
                     <td>Total Number of Questions</td>
                     <td>{{ $result->resultable->questions->count() }}</td>
+                </tr>
+
+                <tr class='table-danger'>
+                    <td>Percentage</td>
+                    <td>${{ $result->percentage }}\%$</td>
                 </tr>
 
             </table>
@@ -41,7 +46,7 @@
 
     <blockquote>Incorrect Question List:</blockquote>
 
-        @foreach($result->incorrect_questions()->chunk(2) as $questions)
+        @forelse($result->incorrect_questions()->chunk(2) as $questions)
             <div class="row">
                 @foreach($questions as $question)
                     <div class="col-md-6 mb-4">
@@ -53,7 +58,7 @@
                                     @foreach($question->answers as $answer)
                                         <li class='list-group-item  justify-content-between {{ $question->correct_answers->contains('answer_id',$answer->id) ? 'list-group-item-success':'' }}' >
                                             {{ $answer->content }}
-                                            @if(in_array($answer->id,$result->exam_data[$question->id]))
+                                            @if(isset($result->exam_data[$question->id]) && in_array($answer->id,$result->exam_data[$question->id]))
                                                 <span class='badge badge-danger'><i class="fa fa-times" aria-hidden="true"></i></span>
                                             @endif
                                         </li>
@@ -64,7 +69,9 @@
                     </div>
                 @endforeach
             </div>
-        @endforeach
+        @empty
+            <blockquote>Wow! Every question you solved were correct! Keep it up.</blockquote>
+        @endforelse
 
 @endsection
 
@@ -79,3 +86,13 @@
 </style>
 @endsection
 
+@section('after-scripts')
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+});
+</script>
+@endsection

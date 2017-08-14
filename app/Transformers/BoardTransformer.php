@@ -18,7 +18,7 @@ class BoardTransformer extends TransformerAbstract
             'name'        => $board->name,
             'description' => $board->description,
             'location'    => $board->location,
-            'image'       => $board->image,
+            'image'       => '/uploads/boards/'.$board->image,
             'slug'        => $board->slug,
         ];
     }

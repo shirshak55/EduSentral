@@ -14,6 +14,7 @@ class AnswerTransformer extends TransformerAbstract
      */
     public function transform(Answer $answer)
     {
+
         return [
             'content' => $answer->content,
         ];

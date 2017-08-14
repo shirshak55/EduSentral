@@ -15,7 +15,8 @@ class Set extends Model
     use SetAttribute,
         SetRelationship,
         SetScope,
-        SetAccess;
+        SetAccess,
+        HasSlug;
 
     public function getSlugOptions(): SlugOptions
     {
@@ -23,8 +24,7 @@ class Set extends Model
                 ->generateSlugsFrom('name')
                 ->saveSlugsTo('slug')
                 ->usingSeparator('-')
-                ->slugsShouldBeNoLongerThan(50)
-                ->doNotGenerateSlugsOnUpdate();
+                ->slugsShouldBeNoLongerThan(50);
     }
 
     public function getRouteKeyName()

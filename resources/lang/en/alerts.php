@@ -45,7 +45,7 @@ return [
 
             'sets' => [
                 'created' => 'The Set was successfully created',
-                'deleted' => 'The Rule was successfully deleted',
+                'deleted' => 'The Set was successfully deleted',
                 'updated' =>  'The Set was sucessfully updated',
             ],
             'boards'=>[
