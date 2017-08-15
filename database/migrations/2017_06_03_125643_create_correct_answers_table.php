@@ -16,8 +16,8 @@ class CreateCorrectAnswersTable extends Migration
         Schema::create('correct_answers', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->integer('question_id')->unsigned()->index();
-            $table->integer('answer_id')->unsigned()->index();
+            $table->uuid('question_id')->index();
+            $table->unsignedInteger('answer_id')->index();
 
             $table->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
             $table->foreign('answer_id')->references('id')->on('answers')->onDelete('cascade');

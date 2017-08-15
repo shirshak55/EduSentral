@@ -19,6 +19,11 @@ class CreateSubjectsTable extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->string('image');
+            $table->unsignedInteger('board_id')->index();
+            $table->unsignedInteger('rule_id')->nullable()->index();
+
+            $table->foreign('board_id')->references('id')->on('boards')->onDelete('cascade');
+            $table->foreign('rule_id')->references('id')->on('rules')->onDelete('set null');
 
             $table->timestamps();
         });

@@ -20,6 +20,8 @@ class CreateSessionsTable extends Migration
             $table->text('user_agent')->nullable();
             $table->text('payload');
             $table->integer('last_activity');
+
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

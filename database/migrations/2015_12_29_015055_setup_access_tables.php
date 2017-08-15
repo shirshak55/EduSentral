@@ -68,9 +68,9 @@ class SetupAccessTables extends Migration
         });
 
         Schema::create(config('access.permission_role_table'), function ($table) {
-            $table->increments('id')->unsigned();
             $table->integer('permission_id')->unsigned();
             $table->integer('role_id')->unsigned();
+            $table->primary(['permission_id','role_id']);
 
             /*
              * Add Foreign/Unique/Index

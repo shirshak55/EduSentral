@@ -31,6 +31,7 @@ class BoardTableSeeder extends Seeder
                 'image'       => 'ku.jpg',
                 'created_at'  => Carbon::now(),
                 'updated_at'  => Carbon::now(),
+                'slug'        => 'ku',
             ],
             [
                 'name'        => 'IOE',
@@ -39,6 +40,7 @@ class BoardTableSeeder extends Seeder
                 'image'       => 'ioe.jpg',
                 'created_at'  => Carbon::now(),
                 'updated_at'  => Carbon::now(),
+                'slug'        => 'ioe'
             ],
             [
                 'name'        => 'St. Xavier',
@@ -48,18 +50,8 @@ class BoardTableSeeder extends Seeder
                 'image'       => 'stxavier.jpg',
                 'created_at'  => Carbon::now(),
                 'updated_at'  => Carbon::now(),
+                'slug'        => 'st_xavier'
             ],
-            [
-                'name'        => 'Budanilkantha',
-                'description' => 'Best High School of Nepal',
-                'description' => 'Located at very beautiful place of nepal. Very good climate.',
-                'location'    => 'Maitighar, Kathmandu',
-                'image'       => 'budanilkantha.jpg',
-                'created_at'  => Carbon::now(),
-                'updated_at'  => Carbon::now(),
-            ],
-
-
         ];
 
         DB::table('boards')->insert($boards);

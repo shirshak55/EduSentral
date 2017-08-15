@@ -31,6 +31,7 @@ class SetTableSeeder extends Seeder
                 'year'       => 2017,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'slug'       => 'kucat2017',
             ],
             [
                 'name'       => 'IOE 2017',
@@ -39,6 +40,7 @@ class SetTableSeeder extends Seeder
                 'year'       => 2017,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+                'slug'       => 'ioe2017',
             ],
 
         ];

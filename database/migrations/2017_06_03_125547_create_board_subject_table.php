@@ -16,8 +16,11 @@ class CreateBoardSubjectTable extends Migration
         Schema::create('board_subject', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('board_id');
-            $table->unsignedInteger('set_id');
+            $table->unsignedInteger('board_id')->index();
+            $table->unsignedInteger('set_id')->index();
+
+            $table->foreign('board_id')->references('id')->on('boards')->onDelete('cascade');
+            $table->foreign('set_id')->references('id')->on('sets')->onDelete('cascade');
 
             $table->timestamps();
         });

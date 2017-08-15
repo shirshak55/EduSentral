@@ -14,7 +14,8 @@ class CreateQuestionsTable extends Migration
     public function up()
     {
         Schema::create('questions', function (Blueprint $table) {
-            $table->increments('id');
+            $table->uuid('id');
+            $table->primary('id');
 
             $table->text('content');
             $table->string('difficulty')->nullable();
@@ -24,6 +25,8 @@ class CreateQuestionsTable extends Migration
 
             $table->string('questionable_type');
             $table->unsignedInteger('questionable_id');
+
+            $table->foreign('questionable_id')->references('id')->on('sets')->onDelete('cascade');
 
             $table->timestamps();
         });

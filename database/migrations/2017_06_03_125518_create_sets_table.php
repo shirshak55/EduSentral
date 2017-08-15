@@ -19,8 +19,11 @@ class CreateSetsTable extends Migration
             $table->string('name');
             $table->string('slug')->unique();
             $table->unsignedInteger('year');
-            $table->unsignedInteger('rule_id')->nullable();
+            $table->unsignedInteger('rule_id')->nullable()->indexed();
             $table->unsignedInteger('board_id')->indexed();
+
+            $table->foreign('board_id')->references('id')->on('boards')->onDelete('cascade');
+            $table->foreign('rule_id')->references('id')->on('rules')->onDelete('set null');
 
             $table->timestamps();
         });

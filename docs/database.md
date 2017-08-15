@@ -4,41 +4,27 @@
 Statistics:
 
 Total Number of Tables: 16
-```
-```
-List of Tables
-+-----------------+------+
-| Table Name      | Rows |
-+-----------------+------+
-| answers         | 88   |
-| board_subject   | 0    |
-| boards          | 4    |
-| correct_answers | 25   |
-| history         | 2    |
-| history_types   | 2    |
-| meta            | 0    |
-| migrations      | 21   |
-| password_resets | 0    |
-| permission_role | 1    |
-| permissions     | 1    |
-| questions       | 22   |
-| results         | 12   |
-| role_user       | 5    |
-| roles           | 3    |
-| rules           | 5    |
-| sessions        | 5    |
-| sets            | 4    |
-| social_logins   | 3    |
-| subjects        | 0    |
-| users           | 5    |
-+-----------------+------+
 
+## List of Models
+* Answer
+* Board
+* CorrectAnswer
+* History
+* Meta
+* User
+* Role
+* Permission
+* Subject
+* Set
+* Result
+* Rule
+```
 answers
 +-------------+------------------+------+-----+---------+----------------+
 | Field       | Type             | Null | Key | Default | Extra          |
 +-------------+------------------+------+-----+---------+----------------+
 | id          | int(10) unsigned | NO   | PRI |         | auto_increment |
-| question_id | int(10) unsigned | NO   | MUL |         |                |
+| question_id | char(36)         | NO   | MUL |         |                |
 | content     | text             | NO   |     |         |                |
 | sort        | int(10) unsigned | NO   |     |         |                |
 | created_at  | timestamp        | YES  |     |         |                |
@@ -50,8 +36,8 @@ board_subject
 | Field      | Type             | Null | Key | Default | Extra          |
 +------------+------------------+------+-----+---------+----------------+
 | id         | int(10) unsigned | NO   | PRI |         | auto_increment |
-| board_id   | varchar(191)     | NO   |     |         |                |
-| set_id     | int(10) unsigned | NO   |     |         |                |
+| board_id   | int(10) unsigned | NO   | MUL |         |                |
+| set_id     | int(10) unsigned | NO   | MUL |         |                |
 | created_at | timestamp        | YES  |     |         |                |
 | updated_at | timestamp        | YES  |     |         |                |
 +------------+------------------+------+-----+---------+----------------+
@@ -64,10 +50,10 @@ boards
 | name        | varchar(191)     | NO   | UNI |         |                |
 | description | text             | NO   |     |         |                |
 | location    | varchar(191)     | NO   |     |         |                |
+| slug        | varchar(191)     | NO   | UNI |         |                |
 | image       | varchar(191)     | NO   |     |         |                |
 | created_at  | timestamp        | YES  |     |         |                |
 | updated_at  | timestamp        | YES  |     |         |                |
-| slug        | varchar(191)     | YES  |     |         |                |
 +-------------+------------------+------+-----+---------+----------------+
 
 correct_answers
@@ -75,7 +61,7 @@ correct_answers
 | Field       | Type             | Null | Key | Default | Extra          |
 +-------------+------------------+------+-----+---------+----------------+
 | id          | int(10) unsigned | NO   | PRI |         | auto_increment |
-| question_id | int(10) unsigned | NO   | MUL |         |                |
+| question_id | char(36)         | NO   | MUL |         |                |
 | answer_id   | int(10) unsigned | NO   | MUL |         |                |
 | created_at  | timestamp        | YES  |     |         |                |
 | updated_at  | timestamp        | YES  |     |         |                |
@@ -138,13 +124,12 @@ password_resets
 +------------+--------------+------+-----+---------+-------+
 
 permission_role
-+---------------+------------------+------+-----+---------+----------------+
-| Field         | Type             | Null | Key | Default | Extra          |
-+---------------+------------------+------+-----+---------+----------------+
-| id            | int(10) unsigned | NO   | PRI |         | auto_increment |
-| permission_id | int(10) unsigned | NO   | MUL |         |                |
-| role_id       | int(10) unsigned | NO   | MUL |         |                |
-+---------------+------------------+------+-----+---------+----------------+
++---------------+------------------+------+-----+---------+-------+
+| Field         | Type             | Null | Key | Default | Extra |
++---------------+------------------+------+-----+---------+-------+
+| permission_id | int(10) unsigned | NO   | PRI |         |       |
+| role_id       | int(10) unsigned | NO   | PRI |         |       |
++---------------+------------------+------+-----+---------+-------+
 
 permissions
 +--------------+------------------+------+-----+---------+----------------+
@@ -158,20 +143,20 @@ permissions
 +--------------+------------------+------+-----+---------+----------------+
 
 questions
-+-------------------+------------------+------+-----+---------+----------------+
-| Field             | Type             | Null | Key | Default | Extra          |
-+-------------------+------------------+------+-----+---------+----------------+
-| id                | int(10) unsigned | NO   | PRI |         | auto_increment |
-| content           | text             | YES  |     |         |                |
-| difficulty        | varchar(191)     | YES  |     |         |                |
-| marks             | int(11)          | NO   |     |         |                |
-| time              | int(11)          | NO   |     |         |                |
-| sort              | int(11)          | NO   |     |         |                |
-| questionable_type | varchar(191)     | NO   |     |         |                |
-| questionable_id   | int(10) unsigned | NO   |     |         |                |
-| created_at        | timestamp        | YES  |     |         |                |
-| updated_at        | timestamp        | YES  |     |         |                |
-+-------------------+------------------+------+-----+---------+----------------+
++-------------------+------------------+------+-----+---------+-------+
+| Field             | Type             | Null | Key | Default | Extra |
++-------------------+------------------+------+-----+---------+-------+
+| id                | char(36)         | NO   | PRI |         |       |
+| content           | text             | NO   |     |         |       |
+| difficulty        | varchar(191)     | YES  |     |         |       |
+| marks             | int(11)          | NO   |     |         |       |
+| time              | int(11)          | NO   |     |         |       |
+| sort              | int(11)          | NO   |     |         |       |
+| questionable_type | varchar(191)     | NO   |     |         |       |
+| questionable_id   | int(10) unsigned | NO   | MUL |         |       |
+| created_at        | timestamp        | YES  |     |         |       |
+| updated_at        | timestamp        | YES  |     |         |       |
++-------------------+------------------+------+-----+---------+-------+
 
 results
 +---------------------+------------------+------+-----+---------+----------------+
@@ -225,7 +210,7 @@ sessions
 | Field         | Type             | Null | Key | Default | Extra |
 +---------------+------------------+------+-----+---------+-------+
 | id            | varchar(191)     | NO   | PRI |         |       |
-| user_id       | int(10) unsigned | YES  |     |         |       |
+| user_id       | int(10) unsigned | YES  | MUL |         |       |
 | ip_address    | varchar(45)      | YES  |     |         |       |
 | user_agent    | text             | YES  |     |         |       |
 | payload       | text             | NO   |     |         |       |
@@ -238,12 +223,12 @@ sets
 +------------+------------------+------+-----+---------+----------------+
 | id         | int(10) unsigned | NO   | PRI |         | auto_increment |
 | name       | varchar(191)     | NO   |     |         |                |
+| slug       | varchar(191)     | NO   | UNI |         |                |
 | year       | int(10) unsigned | NO   |     |         |                |
-| rule_id    | int(10) unsigned | YES  |     |         |                |
-| board_id   | int(10) unsigned | NO   |     |         |                |
+| rule_id    | int(10) unsigned | YES  | MUL |         |                |
+| board_id   | int(10) unsigned | NO   | MUL |         |                |
 | created_at | timestamp        | YES  |     |         |                |
 | updated_at | timestamp        | YES  |     |         |                |
-| slug       | varchar(191)     | YES  |     |         |                |
 +------------+------------------+------+-----+---------+----------------+
 
 social_logins
@@ -268,6 +253,8 @@ subjects
 | name        | varchar(191)     | NO   |     |         |                |
 | description | text             | YES  |     |         |                |
 | image       | varchar(191)     | NO   |     |         |                |
+| board_id    | int(10) unsigned | NO   | MUL |         |                |
+| rule_id     | int(10) unsigned | YES  | MUL |         |                |
 | created_at  | timestamp        | YES  |     |         |                |
 | updated_at  | timestamp        | YES  |     |         |                |
 +-------------+------------------+------+-----+---------+----------------+
@@ -289,4 +276,5 @@ users
 | updated_at        | timestamp           | YES  |     |         |                |
 | deleted_at        | timestamp           | YES  |     |         |                |
 +-------------------+---------------------+------+-----+---------+----------------+
+
 ```

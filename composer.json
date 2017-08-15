@@ -25,6 +25,7 @@
         "spatie/laravel-fractal": "^4.3",
         "spatie/laravel-sluggable": "^1.5",
         "teamtnt/laravel-scout-tntsearch-driver": "^3.0",
+        "webpatser/laravel-uuid": "^2.0",
         "yajra/laravel-datatables-oracle": "^7.0"
     },
     "require-dev": {
