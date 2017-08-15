@@ -1,9 +1,15 @@
 <?php
 
-namespace App\Models\Quiz\Question\Traits;
+namespace App\Models;
+
+use Webpatser\Uuid\Uuid;
 
 trait Uuids
 {
+
+    /**
+     * Boot function from laravel.
+     */
     protected static function boot()
     {
         parent::boot();

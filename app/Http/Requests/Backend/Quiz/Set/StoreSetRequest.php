@@ -30,7 +30,7 @@ class StoreSetRequest extends Request
             'board' => 'required|exists:boards,id',
             'rule'  => 'required|exists:rules,id',
 
-            'question.*.difficulty' => 'required|alpha_num',
+            'question.*.difficulty' => 'required',
             'question.*.marks' => 'required|integer',
             'question.*.time' => 'required|integer',
             'question.*.content' => 'required',

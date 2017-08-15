@@ -105,14 +105,14 @@ return [
 
         'quiz' => [
 
-            'title' => 'Quizz Management',
+            'title' => 'Entrance Quiz Management',
 
             'quiz' => [
                 'all'        => 'All Quizzes',
                 'create'     => 'Create Quiz',
                 'edit'       => 'Edit Quiz',
                 'management' => 'Quiz Management',
-                'main'       => 'Quizzes',
+                'main'       => 'Entrance Quiz',
             ],
 
             'board' => [

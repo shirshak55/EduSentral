@@ -18,7 +18,7 @@ class CreateSocialLoginsTable extends Migration
     {
         Schema::create('social_logins', function (Blueprint $table) {
             $table->increments('id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->index();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('provider', 32);
             $table->string('provider_id');

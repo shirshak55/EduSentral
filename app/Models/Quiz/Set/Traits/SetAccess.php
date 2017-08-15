@@ -69,7 +69,6 @@ trait SetAccess
 
         $i = 1;
         foreach($questions as $question_number=>$question){
-            $questions[$question_number]['id']                            = Uuid::generate();
             $questions[$question_number]['questionable_id']               = $set_id;
             $questions[$question_number]['sort']                           = $i;
             $questions[$question_number]['questionable_type']             = 'set';

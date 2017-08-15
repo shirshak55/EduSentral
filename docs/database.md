@@ -281,7 +281,7 @@ users
 ```
 
 ```
-Simple View Of Table
+Simple View Of Table Structure:
 answers
   id  int(10) unsigned
   question_id  char(36)

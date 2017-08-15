@@ -46,7 +46,7 @@ class ResultRepository extends BaseRepository
         }
         $result = new Result;
         $result->user()->associate($user);
-        $result->percentage = (count($user_answers)-count($incorrect_questions)) / count($user_answers) * 100;
+        $result->percentage = (int) (count($correct_answer_repository)-count($incorrect_questions)) / count($correct_answer_repository) * 100;
         $result->incorrect_questions = $incorrect_questions;
         $result->exam_data = $user_answers;
 
