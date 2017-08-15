@@ -18,6 +18,7 @@ Total Number of Tables: 16
 * Set
 * Result
 * Rule
+
 ```
 answers
 +-------------+------------------+------+-----+---------+----------------+
@@ -276,5 +277,186 @@ users
 | updated_at        | timestamp           | YES  |     |         |                |
 | deleted_at        | timestamp           | YES  |     |         |                |
 +-------------------+---------------------+------+-----+---------+----------------+
+
+```
+
+```
+Simple View Of Table
+answers
+  id  int(10) unsigned
+  question_id  char(36)
+  content  text
+  sort  int(10) unsigned
+  created_at  timestamp
+  updated_at  timestamp
+
+board_subject
+  id  int(10) unsigned
+  board_id  int(10) unsigned
+  set_id  int(10) unsigned
+  created_at  timestamp
+  updated_at  timestamp
+
+boards
+  id  int(10) unsigned
+  name  varchar(191)
+  description  text
+  location  varchar(191)
+  slug  varchar(191)
+  image  varchar(191)
+  created_at  timestamp
+  updated_at  timestamp
+
+correct_answers
+  id  int(10) unsigned
+  question_id  char(36)
+  answer_id  int(10) unsigned
+  created_at  timestamp
+  updated_at  timestamp
+
+history
+  id  int(10) unsigned
+  type_id  int(10) unsigned
+  user_id  int(10) unsigned
+  entity_id  int(10) unsigned
+  icon  varchar(191)
+  class  varchar(191)
+  text  varchar(191)
+  assets  text
+  created_at  timestamp
+  updated_at  timestamp
+
+history_types
+  id  int(10) unsigned
+  name  varchar(191)
+  created_at  timestamp
+  updated_at  timestamp
+
+meta
+  id  int(10) unsigned
+  metable_type  varchar(191)
+  metable_id  int(10) unsigned
+  type  varchar(191)
+  key  varchar(191)
+  value  longtext
+
+migrations
+  id  int(10) unsigned
+  migration  varchar(191)
+  batch  int(11)
+
+password_resets
+  email  varchar(191)
+  token  varchar(191)
+  created_at  timestamp
+
+permission_role
+  permission_id  int(10) unsigned
+  role_id  int(10) unsigned
+
+permissions
+  id  int(10) unsigned
+  name  varchar(191)
+  display_name  varchar(191)
+  created_at  timestamp
+  updated_at  timestamp
+
+questions
+  id  char(36)
+  content  text
+  difficulty  varchar(191)
+  marks  int(11)
+  time  int(11)
+  sort  int(11)
+  questionable_type  varchar(191)
+  questionable_id  int(10) unsigned
+  created_at  timestamp
+  updated_at  timestamp
+
+results
+  id  int(10) unsigned
+  user_id  int(10) unsigned
+  resultable_type  varchar(191)
+  resultable_id  int(10) unsigned
+  percentage  int(10) unsigned
+  incorrect_questions  text
+  exam_data  text
+  created_at  timestamp
+  updated_at  timestamp
+
+role_user
+  id  int(10) unsigned
+  user_id  int(10) unsigned
+  role_id  int(10) unsigned
+
+roles
+  id  int(10) unsigned
+  name  varchar(191)
+  all  tinyint(1)
+  sort  smallint(5) unsigned
+  created_at  timestamp
+  updated_at  timestamp
+
+rules
+  id  int(10) unsigned
+  name  varchar(191)
+  content  text
+  created_at  timestamp
+  updated_at  timestamp
+
+sessions
+  id  varchar(191)
+  user_id  int(10) unsigned
+  ip_address  varchar(45)
+  user_agent  text
+  payload  text
+  last_activity  int(11)
+
+sets
+  id  int(10) unsigned
+  name  varchar(191)
+  slug  varchar(191)
+  year  int(10) unsigned
+  rule_id  int(10) unsigned
+  board_id  int(10) unsigned
+  created_at  timestamp
+  updated_at  timestamp
+
+social_logins
+  id  int(10) unsigned
+  user_id  int(10) unsigned
+  provider  varchar(32)
+  provider_id  varchar(191)
+  token  varchar(191)
+  avatar  varchar(191)
+  created_at  timestamp
+  updated_at  timestamp
+
+subjects
+  id  int(10) unsigned
+  name  varchar(191)
+  description  text
+  image  varchar(191)
+  board_id  int(10) unsigned
+  rule_id  int(10) unsigned
+  created_at  timestamp
+  updated_at  timestamp
+
+users
+  id  int(10) unsigned
+  first_name  varchar(191)
+  last_name  varchar(191)
+  email  varchar(191)
+  password  varchar(191)
+  status  tinyint(3) unsigned
+  confirmation_code  varchar(191)
+  confirmed  tinyint(1)
+  remember_token  varchar(100)
+  created_at  timestamp
+  updated_at  timestamp
+  deleted_at  timestamp
+```
+
+```
 
 ```
