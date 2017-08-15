@@ -1,7 +1,7 @@
 > EduSentral uses relational database. Administrators can use various relational database like `mysql` `sqlite` `pgsql`
 
-```
-Statistics:
+
+## Statistics:
 
 Total Number of Tables: 16
 
